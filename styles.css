@@ -103,6 +103,11 @@ About Me
     flex-direction: column;
 }
 
+.about-me__info {
+    display: flex;
+    flex-direction: column;
+}
+
 .about-me__info--container {
     display: flex;
     flex-direction: column;
@@ -112,6 +117,8 @@ About Me
     margin: 0 auto;
     text-align: center;
 }
+
+
 
 .about-me__picture--mask{
     height: 100px;
@@ -130,11 +137,32 @@ About Me
     padding-bottom: 8px;
 }
 
-.about-me__info--title{
+.about-me__info--title {
     margin-bottom: 16px;
 }
 
-.about-me__info--para{
+.about-me__info--para {
     font-size: 20px;
     margin-bottom: 28px;
+}
+
+.about-me__links {
+    display: flex;
+}
+
+.about-me__link {
+    font-size: 20px;
+    color: #242424;
+    text-decoration: none;
+    padding: 0 16px;
+}
+
+.about-me__img--container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.about-me__img {
+    width: 100%;
 }
