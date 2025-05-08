@@ -185,6 +185,9 @@ About Me
 
 .language {
     width: 25%;
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
 .language__img--wrapper {
@@ -194,7 +197,7 @@ About Me
     padding: 25px 16px;
 }
 
-.language__img:hover {
+.language:hover .language__img {
     filter: brightness(80%);
     opacity: .86;
     transform: scale(0.9);
@@ -209,4 +212,23 @@ About Me
 .language__list{
     display: flex;
     flex-wrap: wrap;
+}
+
+.language__name {
+    position: absolute;
+    bottom: 0;
+    transform: scale(0);
+    transition: all 300ms ease;
+    font-size: 20px;
+    opacity: 0;
+}
+
+.language:hover .language__name {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* PROJECTS */
+.project__img {
+    width: 100%;
 }
