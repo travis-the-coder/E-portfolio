@@ -30,7 +30,34 @@ p {
 
 a {
     text-decoration: none;
+    position: relative;
+    transition: opacity 300ms ease;
 }
+
+i:hover{
+    opacity: 0.7;
+}
+
+.link__hover-effect::after{
+    content:"";
+    position: absolute;
+    height: 3px;
+    background-color: black;
+    width:0;
+    bottom: -3px;
+    right: 0;
+    transition: all 300ms ease;
+}
+
+.link__hover-effect--white::after{
+    background-color: #fff;
+}
+
+.link__hover-effect:hover:after{
+    width: 100%;
+    left: 0;
+}
+
 
 li {
     list-style-type: none;
@@ -48,6 +75,7 @@ li {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 12px;
 }
 
 .text--purple{
@@ -65,9 +93,9 @@ section:nth-child(even){
 
 /* 
 
---------------
-Navigation Bar 
---------------
+==============
+NAVIGATION BAR
+==============
 
 */
 
@@ -79,6 +107,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 12px;
 }
 
 .nav__link--list {
@@ -112,7 +141,9 @@ nav{
 
 /* 
 
-About Me
+========
+ABOUT ME
+========
 
 */
 
@@ -146,7 +177,24 @@ About Me
     overflow: hidden;
     box-shadow: 0 8px rgba(0, 0, 0, .15);
     margin-bottom: 28px;
+    animation: profile-picture-animation 800ms 200ms backwards;
 }
+
+@keyframes profile-picture-animation {
+    0% {
+    transform: scale(0);
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
 
 .about-me__picture{
     width: 100%;
@@ -158,15 +206,13 @@ About Me
 
 .about-me__info--title {
     margin-bottom: 16px;
+    animation: fade-up 650ms 400ms backwards;
 }
 
 .about-me__info--para {
     font-size: 20px;
     margin-bottom: 28px;
-}
-
-.about-me__links {
-    display: flex;
+    animation: fade-up 650ms 600ms backwards;
 }
 
 .about-me__link {
@@ -174,6 +220,25 @@ About Me
     color: #242424;
     padding: 0 16px;
     margin-bottom: 100px;
+}
+
+@keyframes fade-up {
+    0%{
+        opacity: 0;
+        transform: translateY(40px)
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.about-me__links {
+    display: flex;
+    animation: fade-up 650ms 800ms backwards;
+
 }
 
 .about-me__img--container {
@@ -184,10 +249,44 @@ About Me
 
 .about-me__img {
     width: 100%;
+    animation: fade-in 1200ms 800ms backwards;
 }
 
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+    }
 
-/* TECH -- STACK */
+    100%{
+        opacity: 1;
+    }
+
+}
+
+.wave{
+    display: inline-block;
+    animation: wave-animation 500ms infinite ease-in-out;
+}
+
+@keyframes wave-animation {
+    0%{
+        transform: rotate(0);
+    }
+    50%{
+        transform: rotate(30deg);
+    }
+    100%{
+        transform: rotate(0);
+    }
+}
+
+/*
+
+==========
+TECH STACK
+==========
+
+*/
 
 .language {
     width: 25%;
@@ -218,6 +317,8 @@ About Me
 .language__list{
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
 }
 
 .language__name {
@@ -234,7 +335,13 @@ About Me
     opacity: 1;
 }
 
-/* PROJECTS */
+/* 
+
+========
+PROJECTS
+========
+
+*/
 
 .project {
     margin-bottom: 135px;
@@ -301,28 +408,34 @@ About Me
     transition: transform 450ms, opacity 300ms ease;
 }
 
-.project__descriptioin--title {
+.project__description--title {
     font-size: 40px;
 }
 
-.project__descriptioin--para {
+.project__description--para {
     margin: 16px 0; 
 }
 
-.project__descriptioin--link {
+.project__description--link {
     font-size: 30px;
     margin-right: 16px;
 }
 
-.project__descriptioin--title,
-.project__descriptioin--sub-title,
-.project__descriptioin--para,
-.project__descriptioin--link {
+.project__description--title,
+.project__description--sub-title,
+.project__description--para,
+.project__description--link {
     text-align: left;
     color: #fff;
 }
 
-/* FOOTER */
+/*
+
+======
+FOOTER
+======
+
+*/
 
 footer {
     background-color: #242424;
@@ -374,4 +487,76 @@ footer {
 .footer__anchor:hover .footer__logo--popper {
     transform: translateX(60px);
     opacity: 1;
+}
+
+/* 
+
+========================================
+Small phones, tablets, large smartphones
+========================================
+
+*/
+@media (max-width: 768px) {
+    nav{
+        height: 68px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .about-me__info--para{
+        font-size: 18;
+    }
+
+    .language{
+        width: calc(100% / 2);
+    }
+
+    .project__description--para{
+        font-size: 14px
+    }
+
+    .project__description{
+        padding-right: 30px;
+        left: 30px;
+    }
+}
+
+/* 
+
+============
+Small phones
+============
+
+*/
+@media(max-width: 480px){
+    .nav__link:not(:last-child){
+        display: none;
+    }
+
+    .project__description--para{
+        display:none;
+    }
+
+    .project__description--links{
+        display: flex;
+        justify-content: center;
+    }
+
+    .project__description--sub-title{
+        text-align: center;
+        margin: 12px 0;
+    }
+    .project__description--title{
+        font-size: 32px;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .project__description{
+        padding: 0;
+        left: 0;
+        width: 100%;
+    }
 }
